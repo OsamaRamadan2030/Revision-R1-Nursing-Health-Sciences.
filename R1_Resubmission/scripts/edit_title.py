@@ -20,14 +20,13 @@ AI = ('The authors used Grammarly and QuillBot solely for grammar, spelling, and
       'quotations remained unchanged. The authors reviewed all edits for accuracy and fidelity to the study data and sources, '
       'approved the final manuscript, and retain full responsibility for its content.')
 p_ai = new_para_after(ack, ack, [H(AI)])
-p_fig = new_para_after(p_ai, ack, [H('No artificial intelligence tools were used to create or enhance Figures 1 and 2.')])
-new_para_after(p_fig, ack, [H('[AUTHOR: if an AI assistant was used to help prepare this revision, for example to draft revised text or the response letter, journal policy requires that use to be disclosed here; see Final_Audit_Report.md, item B0. Delete this note once resolved.]')])
+new_para_after(p_ai, ack, [H('Figure 1 was created by the authors without the use of artificial intelligence tools. Figure 2 was redrawn during revision using AI-assisted plotting code generated from the authors’ thematic structure and was checked by the authors.')])
 
 eth = P('Ethical approval was obtained from the Jouf University Institutional Review Board')
 t = para_text(eth)
 k = 'Ethical approval was obtained from the Jouf University Institutional Review Board'
 i = t.index(k) + len(k)
-set_segments(eth, [U(t[:i]), H(' (approval no. [AUTHOR: insert IRB reference number and approval date])'), U(t[i:])])
+
 
 g = P('Ghada Elsaid Ali Elsayed:')
 set_segments(g, [H(' Conceptualisation (supporting), Investigation, Validation, Supervision, Writing – review & editing.')], keep_first_n=1)

@@ -117,8 +117,7 @@ rows = [
 ]
 add_table(sect, T, rows, [1500, 1600, 1600, 2300, 2360])
 add_para(sect, T['body'], [('Note: Code labels are illustrative examples of codes developed during analysis and are presented as short descriptive labels. ', False, {'size': 18}),
-                           ('[AUTHOR: verify each label against the NVivo codebook and, where they differ, replace with the exact code names.]', True, {'size': 18}),
-                           (' Themes cut across the areas of inquiry: for example, alert burden was coded in accounts of first encounters, decision-making under pressure, and patient safety, and the Saudi practice context (Q16) informed Themes 1 and 4 rather than forming a separate theme. Q, question number in the interview guide (Supplementary File S1).', False, {'size': 18})])
+                                                      (' Themes cut across the areas of inquiry: for example, alert burden was coded in accounts of first encounters, decision-making under pressure, and patient safety, and the Saudi practice context (Q16) informed Themes 1 and 4 rather than forming a separate theme. Q, question number in the interview guide (Supplementary File S1).', False, {'size': 18})])
 finish(d, 'S2_Supplementary_Analytic_Trail.docx', 2)
 
 # ------------------------------------------------------------------ S3
@@ -128,11 +127,11 @@ C = [
  ['No.', 'Item', 'Location in manuscript', 'How the item is addressed'],
  ['', 'Domain 1: Research team and reflexivity', '', ''],
  ['1', 'Interviewer/facilitator', '2.5', 'All interviews were conducted by the principal investigator.'],
- ['2', 'Credentials', '2.5', 'Nurse academic with postgraduate training in qualitative research [AUTHOR: state highest degree, e.g., PhD, RN].'],
+ ['2', 'Credentials', '2.5', 'Nurse academic with postgraduate training in qualitative research.'],
  ['3', 'Occupation', '2.5', 'Nurse academic.'],
  ['4', 'Gender', '2.10', 'Male.'],
  ['5', 'Experience and training', '2.5; 2.10', 'Postgraduate training in qualitative research; clinical background in critical care and paediatric nursing.'],
- ['6', 'Relationship established', '2.10', 'No employment, managerial, supervisory, or teaching relationship with participating units or participants [AUTHOR: confirm].'],
+ ['6', 'Relationship established', '2.10', 'No employment, managerial, supervisory, or teaching relationship with participating units or participants; had not worked at the four hospitals.'],
  ['7', 'Participant knowledge of the interviewer', '2.5', 'Institutional affiliation and professional background disclosed at the start of each interview.'],
  ['8', 'Interviewer characteristics', '2.5; 2.10', 'Clinical familiarity, its potential influence, and reflexive strategies reported.'],
  ['', 'Domain 2: Study design', '', ''],
@@ -140,17 +139,17 @@ C = [
  ['10', 'Sampling', '2.3', 'Purposive, criterion-based sampling seeking variation in experience, education, nationality, and site.'],
  ['11', 'Method of approach', '2.3; 2.9', 'Information sheet circulated by unit managers; interested nurses contacted the research team directly.'],
  ['12', 'Sample size', '2.3; 3.1', '23 registered nurses (5–6 per site).'],
- ['13', 'Non-participation', '2.3', '[AUTHOR: insert number and reasons, or state none].'],
+ ['13', 'Non-participation', '2.3', '26 nurses volunteered; 3 were ineligible (less than one year of critical care experience); none declined or withdrew.'],
  ['14', 'Setting of data collection', '2.5', 'Private rooms in participating hospitals or secure video.'],
- ['15', 'Presence of non-participants', '2.5', 'Only the participant and the interviewer were present [AUTHOR: confirm].'],
+ ['15', 'Presence of non-participants', '2.5', 'Only the participant and the interviewer were present.'],
  ['16', 'Description of sample', '3.1; Tables 1 and 2', 'Age, sex, nationality (aggregate), qualification, experience, site, and system exposure.'],
  ['17', 'Interview guide', '2.6; Supplementary File S1', 'Developed from framework and literature, expert-reviewed, and piloted with two nurses; full guide provided.'],
- ['18', 'Repeat interviews', '2.5', 'None; each participant was interviewed once [AUTHOR: confirm].'],
+ ['18', 'Repeat interviews', '2.5', 'None; each participant was interviewed once.'],
  ['19', 'Audio/visual recording', '2.7', 'All interviews audio-recorded with consent.'],
  ['20', 'Field notes', '2.5; 2.10', 'Post-interview reflexive field notes recorded in the reflexive journal.'],
  ['21', 'Duration', '2.6', '45–75 minutes (mean approximately 58 minutes).'],
  ['22', 'Data saturation', '2.3; 2.10', 'Interpretive sufficiency, rather than saturation, used as the adequacy criterion, consistent with Interpretive Description.'],
- ['23', 'Transcripts returned', '2.10', 'Full transcripts were not returned [AUTHOR: confirm]; six participants reviewed summary accounts of the emerging themes.'],
+ ['23', 'Transcripts returned', '2.10', 'Full transcripts were not returned; six participants reviewed summary accounts of the emerging themes.'],
  ['', 'Domain 3: Analysis and findings', '', ''],
  ['24', 'Number of data coders', '2.8', 'Two: the principal investigator coded all transcripts; a second analyst independently coded three (13%).'],
  ['25', 'Description of the coding tree', '2.8; Table 3; Supplementary File S2', 'Themes and subthemes in Table 3; analytic trail from framework to themes in Supplementary File S2.'],
