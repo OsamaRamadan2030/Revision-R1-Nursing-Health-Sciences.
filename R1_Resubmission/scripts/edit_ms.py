@@ -56,7 +56,7 @@ set_segments(p, [
 p = P('The Saudi Arabian healthcare context gives')
 set_segments(p, [
     U('The Saudi Arabian healthcare context gives this inquiry particular relevance.'),
-    H(' Vision 2030, launched in 2016, is Saudi Arabia’s national strategic framework for economic diversification and the modernisation of public services; its Health Sector Transformation Program aims to restructure the health system to improve access, quality, and efficiency, including through the expansion of e-health and digital services [[N1]]. Within this agenda, digital health transformation and AI integration have become strategic national priorities, with substantial investment in smart hospital infrastructure, advanced monitoring technologies, and intelligent clinical decision-support systems [[R30,R31]].'),
+    H(' Vision 2030, launched in 2016, is Saudi Arabia’s national framework for economic diversification and public-sector modernisation; its Health Sector Transformation Program aims to improve access, quality, and efficiency, partly through expanded e-health and digital services [[N1]]. Within this agenda, digital health transformation and AI integration have become strategic national priorities, with substantial investment in smart hospital infrastructure, advanced monitoring technologies, and intelligent clinical decision-support systems [[R30,R31]].'),
     U(' Within critical care settings, these developments unfold in a socio-professional environment characterised by rapid technological expansion, a multinational nursing workforce, evolving nursing leadership, and the ongoing development of professional roles and decision-making authority [32]. These contextual features may shape how AI-generated alerts are understood, trusted, and translated into action in practice [33]. Despite growing technological adoption in the Kingdom, there remains limited qualitative evidence on how critical care nurses in Saudi Arabia experience AI-assisted early warning systems and how these systems influence clinical judgment and patient safety practices [34–36]. Addressing this gap is important for informing nursing education, implementation strategies, technology governance, and the safe integration of AI into critical care services.')])
 
 # ---------------------------------------------------------------- Methods
@@ -75,11 +75,17 @@ set_segments(p, [
 
 p = P('Figure 1. Orienting conceptual framework')
 lab_rpr = p.findall(W + 'r')[1].find(W + 'rPr')
-p.append(make_run('. The framework was developed by the authors as a non-causal sensitising heuristic, drawing on Tanner’s clinical judgment model [[N2]], sociotechnical perspectives on health information technology [[N3]], and literature on trust in automation and alarm fatigue [[N4,R65]]. The figure was created by the authors; no artificial intelligence tools were used in its creation or enhancement.', lab_rpr, hl=True))
+p.append(make_run('. The framework is a non-causal sensitising heuristic developed by the authors (Section 2.2). No artificial intelligence tools were used to create or enhance this figure.', lab_rpr, hl=True))
 
 # 2.3 setting: definition paragraph + new Table 1
 p_set = P('The study was conducted across four tertiary-level hospitals')
-p_def = new_para_after(p_set, p_set, [H('For this study, AI-assisted early warning systems were defined as systems that apply machine-learning or other data-driven predictive algorithms to multiple, continuously updated physiological, laboratory, and clinical data to generate patient-specific deterioration risk estimates or alerts. Conventional single-parameter monitor alarms and rule-based aggregate early warning scores that apply fixed thresholds were not considered AI-assisted, although conventional monitor alarms operated alongside the AI-assisted systems in all participating units. The AI-assisted systems in use at each site, including their purpose, AI component, alert types, integration into nursing workflow, duration of implementation, training provision, and local response protocols, are summarised in Table 1, together with participants’ self-reported duration of system use, training, and prior experience with similar systems. Site-level information was obtained from [AUTHOR: insert source, e.g., hospital nursing informatics departments and vendor technical documentation]. Vendor and product names are withheld to preserve institutional anonymity.')])
+_o = para_text(p_set)
+_k = 'Each hospital provided adult critical care services and had operational AI-assisted early warning or clinical decision-support systems integrated into routine nursing workflows at the time of recruitment.'
+_i = _o.index(_k)
+set_segments(p_set, [U(_o[:_i].rstrip(' ')),
+    H(' Each hospital provided adult critical care services and had operational AI-assisted early warning systems (as defined below) integrated into routine nursing workflows at the time of recruitment.'),
+    U(' ' + _o[_i + len(_k):].lstrip(' '))])
+p_def = new_para_after(p_set, p_set, [H('For this study, AI-assisted early warning systems were defined as systems that apply machine-learning or other data-driven predictive algorithms to multiple, continuously updated physiological, laboratory, and clinical data to generate patient-specific deterioration risk estimates or alerts. Single-parameter monitor alarms and rule-based scores with fixed thresholds were not considered AI-assisted, although monitor alarms operated alongside the AI-assisted systems in all units. Table 1 summarises each site’s system (purpose, AI component, alert types, workflow integration, implementation period, training, and response protocol) and participants’ self-reported exposure. Site-level information was obtained from [AUTHOR: insert source, e.g., hospital nursing informatics departments]; vendor and product names are withheld to preserve institutional anonymity.')])
 
 old_cap = P('Table 1. Demographic and Professional Characteristics')
 cap_label_rpr = old_cap.findall(W + 'r')[0].find(W + 'rPr')
@@ -150,7 +156,7 @@ for ri, row in enumerate(t1_rows):
 cap.addnext(tbl)
 
 note_rpr = copy.deepcopy(first_plain_rpr(p_set))
-note = new_para_after(tbl, old_cap, [H('Note: Site-level information was obtained from [AUTHOR: insert source]; participant data were drawn from the demographic form (Supplementary File S1). Vendor and product names are withheld to protect institutional anonymity. The response protocol at Hospital D is as described by participants [AUTHOR: confirm against the written hospital protocol]. AI, artificial intelligence.', size=20)], base_rpr=note_rpr)
+note = new_para_after(tbl, old_cap, [H('Note: Participant exposure data are from the demographic form (Supplementary File S1). Vendor and product names are withheld to protect institutional anonymity. The Hospital D protocol is as described by participants [AUTHOR: confirm against the written protocol]. AI, artificial intelligence.', size=20)], base_rpr=note_rpr)
 
 p = P('Recruitment was facilitated through nursing administration')
 set_segments(p, [
@@ -170,7 +176,7 @@ orig = para_text(p)
 m = re.search(r'Example questions included:.*?approximately 58 minutes\.', orig)
 set_segments(p, [
     U('The final guide covered participants’ experiences working with AI-assisted early warning systems; how they interpreted and responded to alerts; instances of concordance or discordance between AI alerts and bedside assessments; the influence of alerts on decision-making under uncertainty; perceived implications for patient safety; and contextual factors shaping trust and responsiveness.'),
-    H(' These topics were organised into four areas of inquiry derived from the study objectives and the orienting framework, followed by closing questions. During data collection, the guide sections were labelled by area of inquiry only; they were not linked to themes, which were developed during analysis (Section 2.8).'),
+    H(' These topics were organised into four areas of inquiry derived from the study objectives and the orienting framework, followed by closing questions. During data collection, guide sections were labelled by area of inquiry only; themes were developed during analysis (Section 2.8).'),
     U(' ' + m.group(0)),
     H(' The full interview guide and demographic form are provided in Supplementary File S1.')])
 
@@ -180,8 +186,8 @@ set_segments(p, [
     U(' Analysis followed six phases: familiarisation with the data, generation of initial codes, development of candidate themes, review of themes against the full dataset, refinement and naming of themes, and production of the final analytic narrative.')])
 
 p = P('The principal investigator conducted primary coding')
-a1 = new_para_after(p, p, [H('The analysis combined deductive and inductive elements. Deductively, the orienting framework informed the four areas of inquiry in the interview guide and therefore what participants were invited to discuss; no codebook or predefined themes were applied. Inductively, initial codes were generated from participants’ accounts at both semantic and latent levels, and candidate themes were developed around central organising concepts that captured shared patterns of meaning across the dataset, rather than as summaries of responses to particular questions. The final themes broadly correspond to the four areas of inquiry, which is to be expected given that these areas structured the interviews; the interpretive content of each theme, however, was generated through analysis. Interpretations that were not anticipated by the framework or the interview questions include peer-mediated calibration as the main route through which nurses learned to use the systems, scepticism as an early interpretive strategy among senior nurses, negotiation as a third response mode alongside overriding and deferring, the dependence of the perceived safety value of AI on nurses’ available attentional capacity, and the defensive documentation associated with protocols that required justification of non-action. Supplementary File S2 traces, for each theme, the relationships among the framework concepts, the areas of inquiry, illustrative initial codes, and the final interpretation.')])
-a2 = new_para_after(a1, p, [H('Site-level differences in system type, exposure, training, and response protocols (Table 1) were treated as interpretive context rather than as variables for comparison. Coded extracts were tagged by site, and analytic memos examined how accounts of alert interpretation, trust, and escalation related to local protocols, training, and length of exposure. This informed, for example, the interpretation of the more defensive orientation to alert management described at Hospital D, where non-action required documented justification, and of the more collaborative stance described by participants at Hospital A.')])
+a1 = new_para_after(p, p, [H('The analysis combined deductive and inductive elements. The orienting framework shaped the four areas of inquiry, and therefore what participants were asked, but no codebook or predefined themes were applied. Initial codes were generated inductively at semantic and latent levels, and candidate themes were built around central organising concepts rather than as summaries of responses to particular questions. The final themes broadly correspond to the areas of inquiry, as expected given that these structured the interviews, but their interpretive content was generated through analysis. Interpretations not anticipated by the framework or guide include peer-mediated calibration, scepticism as an early interpretive strategy among senior nurses, negotiation as a third response mode, the dependence of the perceived safety value of AI on attentional capacity, and defensive documentation where non-action required justification. Supplementary File S2 traces the relationships among framework concepts, areas of inquiry, illustrative initial codes, and final themes.')])
+a2 = new_para_after(a1, p, [H('Site-level differences (Table 1) were treated as interpretive context rather than as variables for comparison: extracts were tagged by site, and analytic memos examined how accounts of alert interpretation, trust, and escalation related to local protocols, training, and exposure. This informed, for example, the interpretation of defensive alert management at Hospital D, where non-action required documented justification, and of the more collaborative stance described at Hospital A.')])
 
 p = P('Ethical approval was obtained from the Institutional Review Board')
 orig = para_text(p)
@@ -192,7 +198,7 @@ set_segments(p, [
     U(orig[len(first):])])
 
 p = P('Confirmability was strengthened through reflexive journaling')
-new_para_after(p, p, [H('The principal investigator is a male nurse academic whose clinical background is in critical care and paediatric nursing [AUTHOR: specify previous clinical roles and approximate years of practice, e.g., “who worked as an adult ICU staff nurse for X years before entering academia”]. He had no employment, managerial, supervisory, or teaching relationship with the participating units or participants and had not worked at any of the four hospitals [AUTHOR: confirm; if any participant was a former student or colleague, state this and how it was managed]. His clinical familiarity with critical care supported rapport and the understanding of clinical terminology but also risked the assumption of shared meanings. He therefore invited participants to explain situations and terms in their own words and recorded in the reflexive journal instances in which his clinical assumptions shaped follow-up questions; these entries were reviewed in research team meetings.')])
+new_para_after(p, p, [H('The principal investigator is a male nurse academic with a clinical background in critical care and paediatric nursing [AUTHOR: specify roles and years, e.g., “six years as an adult ICU staff nurse”]. He had no employment, managerial, supervisory, or teaching relationship with the participating units or participants and had not worked at any of the four hospitals [AUTHOR: confirm; if any prior relationship existed, state how it was managed]. To limit the assumption of shared clinical meanings, he asked participants to explain situations in their own words and recorded in the reflexive journal where his assumptions shaped follow-up questions; these entries were reviewed in team meetings.')])
 
 # ---------------------------------------------------------------- Findings
 p = P('The study participants ranged in age from 26 to 51 years')
@@ -209,7 +215,8 @@ p.replace(r0, make_run('Table 2. ', r0.find(W + 'rPr'), hl=True))
 p = P('The sample was predominantly female')
 set_segments(p, [
     H('Slightly more than half of the participants were female (n = 12, 52%), and the sample included participants from six nationalities:'),
-    U(' Saudi Arabia (n = 7), the Philippines (n = 5), Jordan (n = 3), Egypt (n = 3), India (n = 3), and Sudan (n = 2). Critical care experience ranged from 2 to 23 years. Most participants held a Bachelor of Science in Nursing (BSN; n = 17), five held a Master of Science in Nursing (MSN), and one held a doctoral qualification.'),
+    U(' Saudi Arabia (n = 7), the Philippines (n = 5), Jordan (n = 3), Egypt (n = 3), India (n = 3), and Sudan (n = 2).'),
+    U(' Most participants held a Bachelor of Science in Nursing (BSN; n = 17), five held a Master of Science in Nursing (MSN), and one held a doctoral qualification.'),
     H(' All four hospital sites were represented, with five or six participants per site.')])
 
 # Participants' table (old Table 1, now Table 2): drop nationality, band experience, merge postgraduate
@@ -288,7 +295,7 @@ print('attributions banded:', n_attr)
 # Figure 2
 p = P('Figure 2. Thematic map')
 lab_rpr = p.findall(W + 'r')[1].find(W + 'rPr')
-p.append(make_run('. Themes are shown with their subthemes; connecting lines indicate interpretive relationships between themes rather than causal pathways. The figure was created by the authors; no artificial intelligence tools were used in its creation or enhancement.', lab_rpr, hl=True))
+p.append(make_run('. Themes are shown with their subthemes; connecting lines indicate interpretive relationships, not causal pathways. No artificial intelligence tools were used to create or enhance this figure.', lab_rpr, hl=True))
 img_p = p.getprevious()
 while img_p is not None and not list(img_p.iter('{http://schemas.openxmlformats.org/drawingml/2006/main}blip')):
     img_p = img_p.getprevious()
@@ -301,7 +308,7 @@ img_p.addnext(ph)
 p = P('The findings showed that engagement with AI-assisted early warning')
 set_segments(p, [
     U('The findings showed that engagement with AI-assisted early warning was not established at implementation but developed through repeated exposure, peer interaction, and practical calibration. Initial uncertainty, particularly among less experienced nurses, suggests that early use of AI may heighten rather than reduce anxiety when the meaning of alerts is unclear.'),
-    H(' Earlier work has largely conceptualised technology acceptance as an attitude or intention assessed at, or soon after, the point of adoption [[N6,R7,R34,R59]]; the present findings extend this work by showing that acceptance is not a fixed starting point but an experience shaped through everyday practice, consistent with frameworks that emphasise the continuing mutual adaptation of technologies, users, and organisations over time [[N7]]. In the Saudi context, where internationally recruited nurses form a large proportion of the nursing workforce [[N11]], this process may be further complicated for nurses who must adapt simultaneously to a new organisational and cultural environment [[N8]] and to a new digital system. The prominence of peer-mediated learning is consistent with accounts of clinical expertise as developed through experience and shared practical knowledge [[N9]], and suggests that informal socialisation remains central to how AI becomes usable in practice, while also introducing variability in the quality of knowledge transfer. These findings point to the need for structured onboarding.'),
+    H(' Earlier work has largely treated technology acceptance as an attitude or intention measured at adoption [[N6,R7,R34,R59]]; these findings suggest instead that acceptance develops through everyday practice, consistent with frameworks emphasising the continuing mutual adaptation of technologies, users, and organisations [[N7]]. In Saudi Arabia, where internationally recruited nurses form a large share of the nursing workforce [[N11]], this may be further complicated for nurses adapting simultaneously to a new organisational and cultural environment [[N8]] and a new digital system. The prominence of peer-mediated learning is consistent with accounts of expertise developing through experience and shared practical knowledge [[N9]]; it makes informal socialisation central to how AI becomes usable but introduces variability in what is learned, pointing to the need for structured onboarding.'),
     U(' Alert burden was another defining feature of this evolving relationship.'),
     H(' Participants’ accounts align with the alarm-fatigue literature [[R61,R65]] and indicate that alert fatigue was experienced not only as attentional depletion but also as a professional and emotional burden linked to system design and workload conditions [[R62]].')])
 
@@ -352,8 +359,8 @@ set_segments(p, [
     U(' Several limitations should be acknowledged. The study was confined to one regional health cluster, and its findings may not generalise directly to settings that use different AI systems, staffing models, or governance arrangements.'),
     H(' Because participation was voluntary, the sample may have favoured nurses who were more willing to reflect on AI use.'),
     U(' In addition, the study relied on narrated rather than observed practice and excluded nurses with less than one year of critical care experience, whose early encounters with AI may differ in important ways.')])
-l1 = new_para_after(p, p, [H('The four sites used different AI-assisted systems with different alert types, implementation histories, training provision, and response protocols (Table 1). This heterogeneity was analytically useful, particularly for understanding how local governance shaped nurses’ engagement, but it means that the findings describe nurses’ experiences of AI-assisted early warning as implemented locally rather than the performance or effects of any single algorithm. In addition, AI-generated alerts were encountered alongside conventional monitor alarms, and participants’ accounts may not always have distinguished between the two; experiences of alert burden in particular may therefore reflect the cumulative alerting environment of the ICU rather than the AI-assisted component alone. Future studies could combine interviews with system audit data to distinguish these sources.')])
-new_para_after(l1, p, [H('Participants were aged 26 to 51 years. The absence of newly qualified nurses reflects the eligibility requirement of at least one year of critical care experience, whereas the absence of nurses older than 51 years may reflect the exclusion of nurses in solely managerial roles and the voluntary recruitment approach. Workforce data were not available to establish whether this age profile was representative of critical care nurses at the participating hospitals or in Saudi Arabia more broadly, where internationally recruited nurses form a large proportion of the nursing workforce [[N11]]. Because age and career stage may shape both familiarity with digital technologies and confidence in exercising independent clinical judgment [[N9]], the experiences of late-career nurses, like those of novices, may differ from those reported here. Interviews were conducted by a nurse academic, and participants may have offered accounts they considered professionally appropriate despite assurances of confidentiality. Finally, the four themes broadly correspond to the four areas of inquiry in the interview guide. Although the interpretive content of each theme was developed through analysis (Section 2.8 and Supplementary File S2), the organisation of the findings partly reflects the domains that participants were invited to discuss.')])
+l1 = new_para_after(p, p, [H('The four sites used different systems, alert types, implementation histories, training, and response protocols (Table 1). Some patterns were reported at all four sites (peer-mediated calibration, concern about false-positive alerts, and inadequate preparation), suggesting that they reflect engagement with AI-assisted early warning generally; others were site-specific, notably the defensive alert management linked to the documented-justification requirement at Hospital D. The findings therefore describe AI-assisted early warning as implemented locally, not the performance of any single algorithm. Because AI-generated alerts were encountered alongside conventional monitor alarms, which participants may not always have distinguished, accounts of alert burden may reflect the cumulative alerting environment; future studies could combine interviews with system audit data.')])
+new_para_after(l1, p, [H('Participants were aged 26 to 51 years. Newly qualified nurses were excluded by the one-year experience criterion, and the absence of nurses older than 51 may reflect the exclusion of solely managerial roles and voluntary recruitment. Workforce data were not available to establish whether this profile is representative of critical care nurses at these hospitals or nationally, where internationally recruited nurses form a large share of the workforce [[N11]]. Because career stage may shape engagement with digital technologies and confidence in independent judgment [[N9]], the experiences of late-career nurses and novices may differ. Participants may also have offered professionally favourable accounts to a nurse-academic interviewer. Finally, the four themes broadly correspond to the guide’s four areas of inquiry; although their interpretive content was developed through analysis (Section 2.8; Supplementary File S2), the organisation of the findings partly reflects the domains discussed.')])
 
 p = P('This study provides qualitative evidence from the Saudi Arabian critical care context')
 orig = para_text(p)
@@ -361,6 +368,38 @@ last = 'Future research should examine how different AI governance models influe
 i = orig.index(last)
 set_segments(p, [U(orig[:i].rstrip(' ')),
                  H(' Future research should examine how different AI governance models and system characteristics shape nursing judgment and patient safety across critical care settings, including among nurses at earlier and later stages of their careers, and should combine interviews with real-time observation of alert management.')])
+
+
+# ---- round 2 edits
+p = P('Participants were eligible if they were registered nurses')
+_o = para_text(p); _k = 'had direct experience using AI-assisted early warning or clinical decision-support systems in their clinical role,'
+_i = _o.index(_k)
+set_segments(p, [U(_o[:_i].rstrip(' ')), H(' had direct experience using the AI-assisted early warning system in use in their unit (Section 2.3) in their clinical role,'), U(' ' + _o[_i + len(_k):].lstrip(' '))])
+
+p = P('The study participants ranged in age from 26 to 51 years')
+_o = para_text(p); _k = 'All 23 participants were registered nurses employed in adult critical care units across the four participating hospitals and had direct, active experience working with AI-assisted early-warning or clinical decision-support systems as part of their everyday nursing roles.'
+_i = _o.index(_k)
+segs = [U(_o[:_i].rstrip(' ')), H(' All 23 participants were registered nurses employed in adult critical care units across the four participating hospitals and had direct, active experience of working with the AI-assisted early warning systems in use at their hospitals as part of their everyday nursing roles.')]
+_rest = _o[_i + len(_k):]
+# keep any already-highlighted tail produced earlier by re-reading runs
+set_segments(p, segs + [U(' The sample reflected the multinational composition characteristic of the Saudi critical care nursing workforce and provided variation in hospital site, professional experience, nationality, and educational preparation.'),
+    H(' Participant characteristics are presented in Table 2, and participants’ exposure to the AI-assisted systems is summarised by site in Table 1.')], check_original=False)
+
+p = P('Data were generated through individual, semi-structured')
+_last = [r for r in p.findall(W + 'r')]
+for r in p.findall(W + 'r'):
+    t = r.find(W + 't')
+    if t is not None and t.text.startswith(' Overall, [AUTHOR: n] interviews were conducted face-to-face'):
+        t.text = t.text.replace(' in English. Before each interview,', ' in English. Only the participant and the interviewer were present at each interview, and each participant was interviewed once [AUTHOR: confirm both statements]. Before each interview,')
+        break
+else:
+    raise AssertionError('modality run not found')
+
+p = P('Methodological rigour was established using trustworthiness criteria')
+_o = para_text(p); _k = 'Their feedback was documented and used to refine the specificity and contextual accuracy of theme descriptions.'
+_i = _o.index(_k) + len(_k)
+set_segments(p, [U(_o[:_i]), H(' Full transcripts were not returned to participants [AUTHOR: confirm].'), U(_o[_i:])])
+
 
 # Table cells inherited right-to-left direction from the Normal style, which
 # reversed ranges such as 36–40 on display; make every table paragraph LTR.

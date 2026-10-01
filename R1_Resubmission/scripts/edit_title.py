@@ -20,7 +20,8 @@ AI = ('The authors used Grammarly and QuillBot solely for grammar, spelling, and
       'quotations remained unchanged. The authors reviewed all edits for accuracy and fidelity to the study data and sources, '
       'approved the final manuscript, and retain full responsibility for its content.')
 p_ai = new_para_after(ack, ack, [H(AI)])
-new_para_after(p_ai, ack, [H('No artificial intelligence tools were used to create or enhance Figures 1 and 2.')])
+p_fig = new_para_after(p_ai, ack, [H('No artificial intelligence tools were used to create or enhance Figures 1 and 2.')])
+new_para_after(p_fig, ack, [H('[AUTHOR: if an AI assistant was used to help prepare this revision, for example to draft revised text or the response letter, journal policy requires that use to be disclosed here; see Final_Audit_Report.md, item B0. Delete this note once resolved.]')])
 
 eth = P('Ethical approval was obtained from the Jouf University Institutional Review Board')
 t = para_text(eth)
