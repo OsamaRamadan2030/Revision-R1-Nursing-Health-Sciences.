@@ -77,7 +77,7 @@ Make every edit in the highlighted file, then regenerate the clean copy:
 - **A9. Incomplete references:** 47 (Yanto: no journal), 50 (Gupta: book details), 24 (El Arab: article number), 57 (check author names).
 - **A10. Quotation punctuation.** In the P22 quotation (subtheme 4.2) a quotation mark is unpaired: `: " Why did you ignore…`. Fix this yourself: your AI statement says quotations were unchanged, so I did not edit it.
 - **A11. CRediT** wording was standardised. Consider adding Funding acquisition and Visualization roles.
-- **Word count:** the main text is about 8,600 words (originally about 7,050). Check the journal limit.
+- **Word count:** the main text is about 8,400 words (originally about 7,050). Check the journal limit.
 - **Optional:** subtheme numbers in Theme 4 (4.1–4.3) duplicate the Discussion section numbers 4.1–4.3. Consider renumbering the subthemes (e.g., 3.6.1) if the journal's typesetting will not separate them.
 
 ### B1. Figure-origin check
